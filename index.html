@@ -1,97 +1,52 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Alisya Beauty | Premium Muslimah Salon</title>
-    
-    <meta name="description" content="Alisya Beauty Premium Muslimah Salon - Booking treatment, lihat promo, gallery dan layanan terbaik untuk muslimah.">
-    <link rel="icon" href="assets/logo/favicon.png">
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#0a0a0a">
-    <meta name="mobile-web-app-capable" content="yes">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alisya Beauty</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body> 
-
-    <div id="loading-screen" class="loading-overlay">
-        <div class="spinner"></div>
-    </div>
-
-    <div id="login-overlay" class="overlay hidden">
-        <div class="login-card">
-            <img src="assets/logo/logo.png" alt="Alisya Beauty" class="brand-logo" onerror="this.style.display='none'">
-            <h2>Selamat Datang</h2>
-            <p>Alisya Beauty Premium Salon</p>
-            <button id="btnLogin" class="btn-google">
-                <i class="fa-brands fa-google"></i> Login dengan Google
-            </button>
+<body>
+    <div class="container">
+        <div class="tab-switch">
+            <button class="tab-button active" id="booking-tab">Booking Baru</button>
+            <button class="tab-button" id="history-tab">Riwayat Booking</button>
         </div>
-    </div>
-
-    <div id="sidebar-backdrop" class="sidebar-backdrop"></div>
-    <div id="sidebar" class="sidebar hidden">
-        <div id="user-profile" class="sidebar-profile">
-            <img id="user-avatar" src="" alt="Avatar" onerror="this.src='assets/logo/default-avatar.png'">
-            <div class="user-info">
-                <span id="user-name">Guest</span>
-                <span id="user-email" style="font-size: 0.7rem; opacity: 0.7;"></span>
+        <div class="tab-content">
+            <div class="booking-form" id="booking-form">
+                <h2>Form Booking</h2>
+                <form id="booking-form-submit">
+                    <input type="text" id="customerName" placeholder="Nama">
+                    <input type="text" id="whatsapp" placeholder="WhatsApp">
+                    <input type="email" id="email" placeholder="Email">
+                    <select id="service" placeholder="Layanan">
+                        <!-- option akan diisi dari Firebase -->
+                    </select>
+                    <input type="date" id="bookingDate" placeholder="Tanggal">
+                    <input type="time" id="bookingTime" placeholder="Jam">
+                    <textarea id="notes" placeholder="Catatan"></textarea>
+                    <button id="booking-button">Booking Sekarang</button>
+                </form>
+            </div>
+            <div class="booking-history" id="booking-history">
+                <h2>Riwayat Booking</h2>
+                <div class="filter-status">
+                    <button class="filter-button active" id="all-status">ALL</button>
+                    <button class="filter-button" id="pending-status">PENDING</button>
+                    <button class="filter-button" id="confirmed-status">CONFIRMED</button>
+                    <button class="filter-button" id="completed-status">COMPLETED</button>
+                    <button class="filter-button" id="cancelled-status">CANCELLED</button>
+                </div>
+                <div class="booking-list" id="booking-list">
+                    <!-- daftar booking akan diisi dari Firebase -->
+                </div>
             </div>
         </div>
-
-        <button id="close-sidebar" class="btn-close"><i class="fa-solid fa-xmark"></i></button>
-        
-        <nav class="sidebar-nav">
-            <a href="#" id="admin-menu" class="hidden" style="color: var(--gold);">
-                <i class="fa-solid fa-user-shield"></i> Admin Panel
-            </a>
-            <a href="#" data-social="about"><i class="fa-solid fa-info-circle"></i> About Us</a>
-            <a href="#" data-social="tiktok"><i class="fa-brands fa-tiktok"></i> TikTok</a>
-            <a href="#" data-social="instagram"><i class="fa-brands fa-instagram"></i> Instagram</a>
-            <a href="#" data-social="whatsapp"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
-            
-            <a href="#" id="logout-btn" style="color: #ff4d4d; margin-top: 20px;">
-                <i class="fa-solid fa-sign-out-alt"></i> Logout
-            </a>
-        </nav>
     </div>
 
-    <header class="navbar hidden">
-        <button id="sidebar-trigger" class="btn-menu"><i class="fa-solid fa-bars"></i></button>
-        <div class="nav-brand">ALISYA BEAUTY</div>
-        <div style="width: 40px;"></div>
-    </header>
-
-    <main id="app-container" class="hidden">
-        <section id="home-page" class="spa-page active"></section>
-        <section id="gallery-page" class="spa-page"></section>
-        <section id="booking-page" class="spa-page"></section>
-        <section id="shop-page" class="spa-page"></section>
-        <section id="profile-page" class="spa-page"></section>
-        <section id="services-page" class="spa-page"></section>
-        <section id="admin-page" class="spa-page"></section>
-    </main>
-
-    <nav id="bottom-nav" class="bottom-nav hidden">
-        <a href="#" class="nav-link active" data-page="home">
-            <i class="fa-solid fa-house"></i><span>Home</span>
-        </a>
-        <a href="#" class="nav-link" data-page="gallery">
-            <i class="fa-solid fa-images"></i><span>Gallery</span>
-        </a>
-        <a href="#" class="nav-link" data-page="booking">
-            <i class="fa-solid fa-calendar-check"></i><span>Booking</span>
-        </a>
-        <a href="#" class="nav-link" data-page="shop">
-            <i class="fa-solid fa-cart-shopping"></i><span>Shop</span>
-        </a>
-        <a href="#" class="nav-link" data-page="profile">
-            <i class="fa-solid fa-circle-user"></i><span>Profil</span>
-        </a>
-    </nav>
-
-<script type="module" src="src/app/main.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebase/9.1.3/firebase-app.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebase/9.1.3/firebase-database.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebase/9.1.3/firebase-auth.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
