@@ -1,0 +1,8 @@
+Untuk mengecek apakah ada bagian yang salah di file2 di repository Anda, saya perlu tahu beberapa informasi lebih lanjut. Berikut beberapa pertanyaan untuk membantu saya memahami situasi Anda:
+
+1. Apa jenis repository yang Anda gunakan (misalnya Git, SVN, Mercurial)?
+2. Apa bahasa pemrograman yang digunakan di repository Anda?
+3. Apa jenis kesalahan yang Anda cari (misalnya sintaks, logika, kesalahan kompilasi)?
+4. Apakah Anda telah mencoba menjalankan kode atau membuild proyek dan mendapatkan kesalahan?
+
+Jika Anda dapat memberikan informasi lebih lanjut, saya dapat membantu Anda mengecek repository Anda dan menemukan bagian yang salah.
