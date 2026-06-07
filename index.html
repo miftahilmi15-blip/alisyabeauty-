@@ -1,73 +1,97 @@
-<!-- HEADER SHOP -->
-<header class="header-shop">
-  <h1>Beauty Shop</h1>
-  <input type="search" id="search-bar" placeholder="Cari produk...">
-  <button class="cart-icon">
-    <i class="fa fa-shopping-cart"></i>
-    <span id="cart-count">0</span>
-  </button>
-</header>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Alisya Beauty | Premium Muslimah Salon</title>
+    
+    <meta name="description" content="Alisya Beauty Premium Muslimah Salon - Booking treatment, lihat promo, gallery dan layanan terbaik untuk muslimah.">
+    <link rel="icon" href="assets/logo/favicon.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body> 
 
-<!-- KATEGORI PRODUK -->
-<section class="kategori-produk">
-  <h2>Filter Kategori</h2>
-  <ul>
-    <li><a href="#" data-kategori="Hair Care">Hair Care</a></li>
-    <li><a href="#" data-kategori="Face Care">Face Care</a></li>
-    <li><a href="#" data-kategori="Body Care">Body Care</a></li>
-    <li><a href="#" data-kategori="Spa Essentials">Spa Essentials</a></li>
-    <li><a href="#" data-kategori="Herbal / Halal Treatment">Herbal / Halal Treatment</a></li>
-  </ul>
-</section>
+    <div id="loading-screen" class="loading-overlay">
+        <div class="spinner"></div>
+    </div>
 
-<!-- PRODUCT GRID (UTAMA) -->
-<section class="product-grid">
-  <h2>Produk</h2>
-  <div class="grid-container">
-    <!-- produk akan dirender disini -->
-  </div>
-</section>
+    <div id="login-overlay" class="overlay hidden">
+        <div class="login-card">
+            <img src="assets/logo/logo.png" alt="Alisya Beauty" class="brand-logo" onerror="this.style.display='none'">
+            <h2>Selamat Datang</h2>
+            <p>Alisya Beauty Premium Salon</p>
+            <button id="btnLogin" class="btn-google">
+                <i class="fa-brands fa-google"></i> Login dengan Google
+            </button>
+        </div>
+    </div>
 
-<!-- PROMO / DISKON BANNER -->
-<section class="promo-banner">
-  <h2>Special Discount 20% Luxury Hair Care</h2>
-  <p>Belanja sekarang dan dapatkan diskon 20%!</p>
-</section>
+    <div id="sidebar-backdrop" class="sidebar-backdrop"></div>
+    <div id="sidebar" class="sidebar hidden">
+        <div id="user-profile" class="sidebar-profile">
+            <img id="user-avatar" src="" alt="Avatar" onerror="this.src='assets/logo/default-avatar.png'">
+            <div class="user-info">
+                <span id="user-name">Guest</span>
+                <span id="user-email" style="font-size: 0.7rem; opacity: 0.7;"></span>
+            </div>
+        </div>
 
-<!-- BEST SELLER SECTION -->
-<section class="best-seller">
-  <h2>Produk Paling Laris</h2>
-  <div class="grid-container">
-    <!-- produk paling laris akan dirender disini -->
-  </div>
-</section>
+        <button id="close-sidebar" class="btn-close"><i class="fa-solid fa-xmark"></i></button>
+        
+        <nav class="sidebar-nav">
+            <a href="#" id="admin-menu" class="hidden" style="color: var(--gold);">
+                <i class="fa-solid fa-user-shield"></i> Admin Panel
+            </a>
+            <a href="#" data-social="about"><i class="fa-solid fa-info-circle"></i> About Us</a>
+            <a href="#" data-social="tiktok"><i class="fa-brands fa-tiktok"></i> TikTok</a>
+            <a href="#" data-social="instagram"><i class="fa-brands fa-instagram"></i> Instagram</a>
+            <a href="#" data-social="whatsapp"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+            
+            <a href="#" id="logout-btn" style="color: #ff4d4d; margin-top: 20px;">
+                <i class="fa-solid fa-sign-out-alt"></i> Logout
+            </a>
+        </nav>
+    </div>
 
-<!-- CART SYSTEM (BASIC) -->
-<section class="cart-system">
-  <h2>Keranjang</h2>
-  <ul id="cart-list">
-    <!-- produk yang dipilih akan dirender disini -->
-  </ul>
-  <p id="cart-total">Total: Rp 0</p>
-  <button id="checkout-btn">Checkout</button>
-</section>
+    <header class="navbar hidden">
+        <button id="sidebar-trigger" class="btn-menu"><i class="fa-solid fa-bars"></i></button>
+        <div class="nav-brand">ALISYA BEAUTY</div>
+        <div style="width: 40px;"></div>
+    </header>
 
-<!-- CHECKOUT (OPTIONAL FLOW) -->
-<section class="checkout" style="display: none;">
-  <h2>Checkout</h2>
-  <form id="checkout-form">
-    <label for="nama">Nama:</label>
-    <input type="text" id="nama" name="nama">
-    <label for="alamat">Alamat:</label>
-    <input type="text" id="alamat" name="alamat">
-    <label for="nomor-whatsapp">Nomor WhatsApp:</label>
-    <input type="text" id="nomor-whatsapp" name="nomor-whatsapp">
-    <label for="metode-pembayaran">Metode Pembayaran:</label>
-    <select id="metode-pembayaran" name="metode-pembayaran">
-      <option value="manual">Manual</option>
-      <option value="cod">COD</option>
-      <option value="transfer">Transfer</option>
-    </select>
-    <button id="submit-checkout">Submit</button>
-  </form>
-</section>
+    <main id="app-container" class="hidden">
+        <section id="home-page" class="spa-page active"></section>
+        <section id="gallery-page" class="spa-page"></section>
+        <section id="booking-page" class="spa-page"></section>
+        <section id="shop-page" class="spa-page"></section>
+        <section id="profile-page" class="spa-page"></section>
+        <section id="services-page" class="spa-page"></section>
+        <section id="admin-page" class="spa-page"></section>
+    </main>
+
+    <nav id="bottom-nav" class="bottom-nav hidden">
+        <a href="#" class="nav-link active" data-page="home">
+            <i class="fa-solid fa-house"></i><span>Home</span>
+        </a>
+        <a href="#" class="nav-link" data-page="gallery">
+            <i class="fa-solid fa-images"></i><span>Gallery</span>
+        </a>
+        <a href="#" class="nav-link" data-page="booking">
+            <i class="fa-solid fa-calendar-check"></i><span>Booking</span>
+        </a>
+        <a href="#" class="nav-link" data-page="shop">
+            <i class="fa-solid fa-cart-shopping"></i><span>Shop</span>
+        </a>
+        <a href="#" class="nav-link" data-page="profile">
+            <i class="fa-solid fa-circle-user"></i><span>Profil</span>
+        </a>
+    </nav>
+
+<script type="module" src="src/app/main.js"></script>
+</body>
+</html>
