@@ -1,1 +1,0 @@
-Perintah `git push` digunakan untuk mengirimkan perubahan yang telah dilakukan di lokal repository ke remote repository. Berikut adalah contoh cara menggunakan perintah `git push`:
