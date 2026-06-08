@@ -1,0 +1,23 @@
+{
+  "name": "Alisya Beauty",
+  "version": "1.0.0",
+  "root_features": "src/features",
+  "global_files": [
+    "src/config/firebase.js",
+    "src/router/router.js",
+    "src/services/database.js"
+  ],
+  "coding_rules": [
+    "Always use async/await for Firebase operations",
+    "Use try-catch for all DB calls",
+    "Keep components modular"
+  ],
+  "features": {
+    "auth": { "folder": "auth", "db": ["users"] },
+    "booking": { "folder": "booking", "db": ["bookings"] },
+    "products": { "folder": "products", "db": ["products"] },
+    "treatments": { "folder": "treatments", "db": ["treatments"] },
+    "schedule": { "folder": "schedule", "db": ["schedules"] },
+    "admin": { "folder": "admin", "db": ["admin"] }
+  }
+}
